@@ -1,4 +1,4 @@
-package com.sulimann.picpay.utils.clients.http;
+package com.sulimann.picpay.utils.http;
 
 import java.util.Optional;
 

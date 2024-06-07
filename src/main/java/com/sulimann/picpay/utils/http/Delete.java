@@ -1,15 +1,15 @@
-package com.sulimann.picpay.utils.clients.http;
+package com.sulimann.picpay.utils.http;
 
 import org.springframework.http.HttpMethod;
 
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
-public class Put extends HttpPadrao {
+public class Delete extends HttpPadrao {
 
     @Override
     protected HttpMethod method() {
-        return HttpMethod.PUT;
+        return HttpMethod.DELETE;
     }
 
 }
