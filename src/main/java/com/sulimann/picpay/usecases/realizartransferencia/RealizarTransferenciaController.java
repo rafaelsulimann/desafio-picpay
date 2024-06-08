@@ -39,20 +39,20 @@ public class RealizarTransferenciaController {
   @Transactional
   public ResponseEntity<?> realizarTransferencia(@RequestBody @Valid RealizarTransferenciaRequest request) {
     var pagador = this.usuarioRepository
-      .findById(request.getPagadorId())
-      .orElseThrow(() -> new UsuarioNaoEncontradoException(request.getPagadorId()));
+      .findById(request.pagadorId())
+      .orElseThrow(() -> new UsuarioNaoEncontradoException(request.pagadorId()));
 
     var recebedor = this.usuarioRepository
-      .findById(request.getRecebedorId())
-      .orElseThrow(() -> new UsuarioNaoEncontradoException(request.getRecebedorId()));
+      .findById(request.recebedorId())
+      .orElseThrow(() -> new UsuarioNaoEncontradoException(request.recebedorId()));
 
-    this.transferenciaValidator.validarTransferencia(request.getValor(), pagador);
+    this.transferenciaValidator.validarTransferencia(request.valor(), pagador, recebedor);
     this.autorizacaoTransferenciaService.autorizar();
 
-    pagador.debitar(request.getValor());
-    recebedor.creditar(request.getValor());
+    pagador.debitar(request.valor());
+    recebedor.creditar(request.valor());
 
-    Transferencia transferencia = new Transferencia(request.getValor(), pagador, recebedor);
+    Transferencia transferencia = new Transferencia(request.valor(), pagador, recebedor);
 
     this.manager.merge(pagador);
     this.manager.merge(recebedor);

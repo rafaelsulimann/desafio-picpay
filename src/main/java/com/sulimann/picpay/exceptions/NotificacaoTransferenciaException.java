@@ -1,10 +1,8 @@
 package com.sulimann.picpay.exceptions;
 
 import org.springframework.http.ProblemDetail;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
-import com.sulimann.picpay.usecases.realizartransferencia.AutorizacaoTransferenciaResponse;
 import com.sulimann.picpay.usecases.realizartransferencia.NotificacaoTransferenciaErrorResponse;
 
 public class NotificacaoTransferenciaException extends PicPayException{

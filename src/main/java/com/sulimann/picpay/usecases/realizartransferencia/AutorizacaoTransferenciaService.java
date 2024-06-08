@@ -19,8 +19,8 @@ public class AutorizacaoTransferenciaService {
     try {
       restClient.get()
         .uri("https://util.devi.tools/api/v2/authorize")
-        .retrieve();
-
+        .retrieve()
+        .body(Void.class);
     } catch (HttpClientErrorException e) {
       throw new AutorizacaoTransferenciaException(e);
     }

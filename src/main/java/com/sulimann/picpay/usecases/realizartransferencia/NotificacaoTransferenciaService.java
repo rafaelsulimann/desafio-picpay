@@ -21,7 +21,8 @@ public class NotificacaoTransferenciaService {
       restClient.post()
         .uri("https://util.devi.tools/api/v1/notify")
         .body(transferencia)
-        .retrieve();
+        .retrieve()
+        .body(Void.class);
     } catch (HttpServerErrorException e) {
       throw new NotificacaoTransferenciaException(e);
     }

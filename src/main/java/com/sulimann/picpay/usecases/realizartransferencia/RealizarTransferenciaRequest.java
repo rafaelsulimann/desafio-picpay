@@ -6,18 +6,17 @@ import com.sulimann.picpay.utils.constants.ErrorMessage;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
 
-@Getter
-public class RealizarTransferenciaRequest {
+public record RealizarTransferenciaRequest(
 
   @NotNull(message = ErrorMessage.CAMPO_OBRIGATORIO)
   @DecimalMin(value = "0.01", message = "O valor da transferência deve ser maior que 0")
-  private BigDecimal valor;
+  BigDecimal valor,
 
   @NotNull(message = ErrorMessage.CAMPO_OBRIGATORIO)
-  private Long pagadorId;
+  Long pagadorId,
 
   @NotNull(message = ErrorMessage.CAMPO_OBRIGATORIO)
-  private Long recebedorId;
-}
+  Long recebedorId
+
+) {}
